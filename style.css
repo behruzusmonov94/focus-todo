@@ -12,8 +12,8 @@ p{
     margin: 0;
     padding: 0;
 }
-.list-group-item:hover{
-    background-color: rgb(241, 241, 241);
+.list-group-item:active{
+    background-color: rgb(64, 223, 156);
 }
 
 .date{
