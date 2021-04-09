@@ -19,3 +19,7 @@ p{
 .date{
     font-size: x-small;
 }
+
+.checked-item{
+    background-color: rgb(158, 255, 214);
+}
