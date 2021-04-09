@@ -18,7 +18,7 @@ const generateTodo = (todo,time) => {
         <p class="mx-2">${todo}</p>
         <p class="fst-italic date">${hours}:${minutes}:${sec}</p>
     </div>
-    <button class="delete btn btn-danger btn-sm fas fa-trash-alt"></button>
+    <button class="delete btn btn-sm text-danger fas fa-trash-alt"></button>
     </label>
     `
     return html;
