@@ -1,0 +1,21 @@
+body{
+    background-color: rgb(250, 250, 250);
+    
+    
+}
+
+.list-group-item{
+    background-color: rgb(255, 255, 255);
+    transition: all 0.2s ease;
+}
+p{
+    margin: 0;
+    padding: 0;
+}
+.list-group-item:hover{
+    background-color: rgb(241, 241, 241);
+}
+
+.date{
+    font-size: x-small;
+}
