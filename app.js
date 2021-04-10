@@ -17,7 +17,7 @@ const generateTodo = (todo,time) => {
     <div class="d-flex">
         <input class="form-check-input me-1 check" type="checkbox" value="">
         <p class="mx-2">${todo}</p>
-        <p class="fst-italic date">${hours}:${minutes}:${sec}</p>
+        <p class="fst-italic date">${hours}:${minutes}</p>
     </div>
     <button class="delete btn btn-sm text-danger fas fa-trash-alt" data-bs-toggle="modal" data-bs-target="#deleteTodos"></button>
     </label>
@@ -45,12 +45,13 @@ const deleteItem = document.getElementById('delete-todo')
 const confirmDelete = document.getElementById('confirmDelete')
 todos.addEventListener('click', (e) => {
     if(e.target.classList.contains('delete')){
-        
+        let dataKey = e.target.parentElement.getAttribute('data-key')
+
         
         confirmDelete.addEventListener('click', () => {
-            
+           
             e.target.parentElement.remove()
-            
+            localStorage.removeItem(dataKey)
         })
         
     }
@@ -96,8 +97,15 @@ for(let i = 0; i < localStorage.length; i++){
     let getDate = new Date(parseInt(dataKey))
     let getHours = getDate.getHours()
     let getMinutes = getDate.getMinutes()
-
     todos.innerHTML += generateTodoLocalStorage(dataVal, getHours, getMinutes, dataKey)
-    
-    
 }
+
+
+//clear ALL
+const clearAll = document.getElementById('clearAll')
+
+clearAll.addEventListener('click', (e) => {
+    confirmDelete.addEventListener('click', () => {  
+        localStorage.clear()
+    })
+})
