@@ -8,11 +8,12 @@ const todos = document.querySelector('.todos')
 const generateTodo = (todo,time) => {
     //get time
     var time = new Date()
+    var timeNow = Date.now()
     var hours = time.getHours()
     var minutes = time.getMinutes()
     var sec = time.getSeconds()
     let html = `
-    <label class="list-group-item d-flex justify-content-between align-items-center">
+    <label class="list-group-item d-flex justify-content-between align-items-center" data-key="${timeNow}">
     <div class="d-flex">
         <input class="form-check-input me-1 check" type="checkbox" value="">
         <p class="mx-2">${todo}</p>
@@ -68,14 +69,15 @@ todos.addEventListener('click', (e)=>{
 
 //generate with localStorage
 //add todo
-const generateTodoLocalStorage = (name,hours,minutes) => {
+const generateTodoLocalStorage = (name,hours,minutes,dataKey) => {
     //get time
     var time = new Date()
     var hours = time.getHours()
     var minutes = time.getMinutes()
     var sec = time.getSeconds()
+
     let html = `
-    <label class="list-group-item d-flex justify-content-between align-items-center">
+    <label class="list-group-item d-flex justify-content-between align-items-center" data-key="${dataKey}">
     <div class="d-flex">
         <input class="form-check-input me-1 check" type="checkbox" value="">
         <p class="mx-2">${name}</p>
@@ -95,7 +97,7 @@ for(let i = 0; i < localStorage.length; i++){
     let getHours = getDate.getHours()
     let getMinutes = getDate.getMinutes()
 
-    todos.innerHTML += generateTodoLocalStorage(dataVal, getHours, getMinutes)
+    todos.innerHTML += generateTodoLocalStorage(dataVal, getHours, getMinutes, dataKey)
     
     
 }
