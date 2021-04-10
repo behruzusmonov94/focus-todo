@@ -90,6 +90,7 @@ const generateTodoLocalStorage = (name,hours,minutes,dataKey) => {
     return html;
 }
 
+var dataArr = []
 
 for(let i = 0; i < localStorage.length; i++){
     let dataKey = localStorage.key(i)
@@ -97,7 +98,9 @@ for(let i = 0; i < localStorage.length; i++){
     let getDate = new Date(parseInt(dataKey))
     let getHours = getDate.getHours()
     let getMinutes = getDate.getMinutes()
-    todos.innerHTML += generateTodoLocalStorage(dataVal, getHours, getMinutes, dataKey)
+    console.log(getHours, getMinutes, dataVal);
+    // todos.innerHTML += generateTodoLocalStorage(dataVal, getHours, getMinutes, dataKey)
+    
 }
 
 
