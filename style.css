@@ -3,6 +3,9 @@ body{
     
     
 }
+.container{
+    max-width: 400px;
+}
 
 .list-group-item{
     background-color: rgb(255, 255, 255);

@@ -27,9 +27,12 @@ const generateTodo = (todo,time) => {
 addForm.addEventListener('submit', e => {
     e.preventDefault();
     let inpValue = addForm.name.value.trim()
-    console.log(inpValue);
-    todos.innerHTML += generateTodo(inpValue)
-    addForm.reset()
+    if(inpValue.length){
+        console.log(inpValue);
+        todos.innerHTML += generateTodo(inpValue)
+        addForm.reset()
+    }
+    
 
 })
 
