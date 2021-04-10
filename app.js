@@ -18,7 +18,7 @@ const generateTodo = (todo,time) => {
         <p class="mx-2">${todo}</p>
         <p class="fst-italic date">${hours}:${minutes}:${sec}</p>
     </div>
-    <button class="delete btn btn-sm text-danger fas fa-trash-alt"></button>
+    <button class="delete btn btn-sm text-danger fas fa-trash-alt" data-bs-toggle="modal" data-bs-target="#deleteTodos"></button>
     </label>
     `
     return html;
@@ -37,13 +37,16 @@ addForm.addEventListener('submit', e => {
 //delete todos
 
 const deleteItem = document.getElementById('delete-todo')
-
+const confirmDelete = document.getElementById('confirmDelete')
 todos.addEventListener('click', (e) => {
     if(e.target.classList.contains('delete')){
-        let conf = confirm('Siz rostan ham o`chirmoqchimisiz?')
-        if(conf){
+        
+        
+        confirmDelete.addEventListener('click', () => {
+            
             e.target.parentElement.remove()
-        }
+            
+        })
         
     }
 })
@@ -57,3 +60,6 @@ todos.addEventListener('click', (e)=>{
     }
     
 })
+
+
+
