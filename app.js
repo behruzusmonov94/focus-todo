@@ -116,3 +116,36 @@ clearAll.addEventListener('click', (e) => {
         })
     })
 })
+
+//search todo
+const filterTodos = (term) => {
+    Array.from(todos.children)
+        .filter((todo) => {
+            return !todo.textContent.toLocaleLowerCase().includes(term)
+        })
+        .forEach((todo) => {
+            todo.classList.add('filtered')
+        })
+    Array.from(todos.children)
+        .filter((todo) => {
+            return todo.textContent.includes(term)
+        })
+        .forEach((todo) => {
+            todo.classList.remove('filtered')
+        })
+}
+
+
+
+const search = document.querySelector('#search-todo input')
+const searchForm = document.getElementById('search-todo')
+
+search.addEventListener('keyup', (e) => {
+    console.log(e.target.value);
+    const term = search.value.trim().toLocaleLowerCase();
+    filterTodos(term)
+})
+
+searchForm.addEventListener('submit', e => e.preventDefault())
+
+

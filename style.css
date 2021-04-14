@@ -26,3 +26,6 @@ p{
 .checked-item{
     background-color: rgb(158, 255, 214);
 }
+.filtered{
+    display: none !important;
+}
