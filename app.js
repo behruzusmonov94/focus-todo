@@ -110,5 +110,6 @@ const clearAll = document.getElementById('clearAll')
 clearAll.addEventListener('click', (e) => {
     confirmDelete.addEventListener('click', () => {  
         localStorage.clear()
+        todos.remove()
     })
 })
