@@ -63,12 +63,13 @@ todos.addEventListener('click', (e)=>{
     if(e.target.classList.contains('check')){
         e.target.setAttribute('checked', 'checked')
         e.target.parentElement.parentElement.classList.toggle('checked-item')
+        
     }
     
 })
 
 
-//generate with localStorage
+//generate from localStorage
 //add todo
 const generateTodoLocalStorage = (name,hours,minutes,dataKey) => {
     //get time
@@ -83,6 +84,7 @@ const generateTodoLocalStorage = (name,hours,minutes,dataKey) => {
         <input class="form-check-input me-1 check" type="checkbox" value="">
         <p class="mx-2">${name}</p>
         <p class="fst-italic date">${hours}:${minutes}</p>
+        
     </div>
     <button class="delete btn btn-sm text-danger fas fa-trash-alt" data-bs-toggle="modal" data-bs-target="#deleteTodos"></button>
     </label>
@@ -149,3 +151,12 @@ search.addEventListener('keyup', (e) => {
 searchForm.addEventListener('submit', e => e.preventDefault())
 
 
+//sort item
+
+const sortA = document.getElementById('sortA')
+const sortZ = document.getElementById('sortZ')
+
+
+sortA.addEventListener('click', (e)=>{
+    const todosList = Array.from(todos.children)
+})

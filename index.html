@@ -15,9 +15,9 @@
 
 <body>
 
-    <div class="container text-primary">
+    <div class="container">
         <header>
-            <h1 class="text-center">Focus todos</h1>
+            <h1 class="text-center text-primary">Focus todos</h1>
         </header>
         <hr>
         <div class="mb-3">
@@ -25,17 +25,23 @@
                 <input type="text" class="form-control" placeholder="Search todos">
             </form>
         </div>
+        <div class="my-2">
+            <button class="btn btn-outline-dark" id="sortA"><i class="fas fa-sort-alpha-down"></i></button>
+            <button class="btn btn-outline-dark" id="sortZ"><i class="fas fa-sort-alpha-down-alt"></i></button>
+        </div>
         <div class="todos list-group">
             
         </div>
+
+
         <form id="add-form">
             <div class="input-group mt-3">
                 <input type="text" class="form-control" name="name" placeholder="Add new todos" required>
-                <button class="btn btn-primary" type="submit" id="add-button">Add</button>
+                <button class="btn btn-primary" type="submit" id="add-button"><i class="fas fa-plus"></i></button>
             </div>
         </form>
         <div class="container text-center">
-            <button class="btn btn-danger" id="clearAll" data-bs-toggle="modal" data-bs-target="#deleteTodos">Clear all</button>
+            <button class="btn btn-outline-danger" id="clearAll" data-bs-toggle="modal" data-bs-target="#deleteTodos"><i class="far fa-trash-alt"></i> Clear all</button>
         </div>
     </div>
 
