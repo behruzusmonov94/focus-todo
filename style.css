@@ -1,7 +1,5 @@
 body{
     background-color: rgb(250, 250, 250);
-    
-    
 }
 .container{
     max-width: 400px;
@@ -28,4 +26,8 @@ p{
 }
 .filtered{
     display: none !important;
+}
+
+.dark-mode{
+    filter: invert(95%) hue-rotate(180deg);
 }
