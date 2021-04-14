@@ -98,8 +98,8 @@ for(let i = 0; i < localStorage.length; i++){
     let getDate = new Date(parseInt(dataKey))
     let getHours = getDate.getHours()
     let getMinutes = getDate.getMinutes()
-    console.log(getHours, getMinutes, dataVal);
-    // todos.innerHTML += generateTodoLocalStorage(dataVal, getHours, getMinutes, dataKey)
+    // console.log(getHours, getMinutes, dataVal);
+    todos.innerHTML += generateTodoLocalStorage(dataVal, getHours, getMinutes, dataKey)
     
 }
 
@@ -110,6 +110,9 @@ const clearAll = document.getElementById('clearAll')
 clearAll.addEventListener('click', (e) => {
     confirmDelete.addEventListener('click', () => {  
         localStorage.clear()
-        todos.remove()
+        const allItems = document.querySelectorAll('.todos label')
+        allItems.forEach(item => {
+            item.remove()
+        })
     })
 })
