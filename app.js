@@ -17,7 +17,7 @@ const generateTodo = (todo,time) => {
     <div class="d-flex">
         <input class="form-check-input me-1 check" type="checkbox" value="">
         <p class="mx-2">${todo}</p>
-        <p class="fst-italic date">${hours}:${minutes}</p>
+        <p class="fst-italic date">${hours}:${minutes}:${sec}</p>
     </div>
     <button class="delete btn btn-sm text-danger fas fa-trash-alt" data-bs-toggle="modal" data-bs-target="#deleteTodos"></button>
     </label>
@@ -71,26 +71,7 @@ todos.addEventListener('click', (e)=>{
 
 //generate from localStorage
 //add todo
-const generateTodoLocalStorage = (name,hours,minutes,dataKey) => {
-    //get time
-    var time = new Date()
-    var hours = time.getHours()
-    var minutes = time.getMinutes()
-    var sec = time.getSeconds()
 
-    let html = `
-    <label class="list-group-item d-flex justify-content-between align-items-center" data-key="${dataKey}">
-    <div class="d-flex">
-        <input class="form-check-input me-1 check" type="checkbox" value="">
-        <p class="mx-2">${name}</p>
-        <p class="fst-italic date">${hours}:${minutes}</p>
-        
-    </div>
-    <button class="delete btn btn-sm text-danger fas fa-trash-alt" data-bs-toggle="modal" data-bs-target="#deleteTodos"></button>
-    </label>
-    `
-    return html;
-}
 
 var dataArr = []
 
@@ -98,11 +79,21 @@ for(let i = 0; i < localStorage.length; i++){
     let dataKey = localStorage.key(i)
     let dataVal = localStorage.getItem(dataKey)
     let getDate = new Date(parseInt(dataKey))
-    let getHours = getDate.getHours()
-    let getMinutes = getDate.getMinutes()
-    // console.log(getHours, getMinutes, dataVal);
-    todos.innerHTML += generateTodoLocalStorage(dataVal, getHours, getMinutes, dataKey)
-    
+    var hours = getDate.getHours()
+    var minutes = getDate.getMinutes()
+    var sec = getDate.getSeconds()
+    let html = `
+    <label class="list-group-item d-flex justify-content-between align-items-center" data-key="${dataKey}">
+    <div class="d-flex">
+        <input class="form-check-input me-1 check" type="checkbox" value="">
+        <p class="mx-2">${dataVal}</p>
+        <p class="fst-italic date">${hours}:${minutes}:${sec}</p>
+        
+    </div>
+    <button class="delete btn btn-sm text-danger fas fa-trash-alt" data-bs-toggle="modal" data-bs-target="#deleteTodos"></button>
+    </label>
+    `
+    todos.innerHTML += html
 }
 
 
