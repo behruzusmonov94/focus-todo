@@ -2,6 +2,34 @@ const addForm = document.getElementById('add-form')
 const todos = document.querySelector('.todos')
 
 
+//date range
+let startTime = null;
+let endTime = null;
+
+$(function() {
+
+    $('input[name="daterange"]').daterangepicker({
+        autoUpdateInput: false,
+        "timePicker": true,
+        "timePicker24Hour": true,
+        "autoApply": true,
+        "opens": "center",
+        "drops": "auto"
+    }, function(start, end){
+        startTime = start.format('YYYY-MM-DD, hh:mm:ss')
+        endTime = end.format('YYYY-MM-DD, hh:mm:ss')
+    });
+
+    $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+    });
+  
+    $('input[name="daterange"]').on('cancel.daterangepicker', function(ev, picker) {
+        $(this).val('');
+    });
+
+});
+
 
 
 //add todo
@@ -9,15 +37,13 @@ const generateTodo = (todo,time) => {
     //get time
     var time = new Date()
     var timeNow = Date.now()
-    var hours = time.getHours()
-    var minutes = time.getMinutes()
-    var sec = time.getSeconds()
+    
     let html = `
     <label class="list-group-item d-flex justify-content-between align-items-center" data-key="${timeNow}">
     <div class="d-flex">
         <input class="form-check-input me-1 check" type="checkbox" value="">
         <p class="mx-2">${todo}</p>
-        <p class="fst-italic date">${hours}:${minutes}:${sec}</p>
+        <p class="fst-italic date">${dateFns.distanceInWordsToNow(timeNow, { addSuffix: true })}</p>
     </div>
     <button class="delete btn btn-sm text-danger fas fa-trash-alt" data-bs-toggle="modal" data-bs-target="#deleteTodos"></button>
     </label>
@@ -79,9 +105,6 @@ for(let i = 0; i < localStorage.length; i++){
     let dataKey = localStorage.key(i)
     let dataVal = localStorage.getItem(dataKey)
     let getDate = new Date(parseInt(dataKey))
-    var hours = getDate.getHours()
-    var minutes = getDate.getMinutes()
-    var sec = getDate.getSeconds()
     let html = `
     <label class="list-group-item d-flex justify-content-between align-items-center" data-key="${dataKey}">
     <div class="d-flex">
@@ -170,3 +193,6 @@ darkMode.addEventListener('click', (e) => {
     }
     
 })
+
+
+
