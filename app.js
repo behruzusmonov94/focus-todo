@@ -170,15 +170,3 @@ darkMode.addEventListener('click', (e) => {
     }
     
 })
-
-let globalDate = new Date()
-
-for(let i = 0; i < localStorage.length; i++){
-
-    let key = localStorage.key(i)
-    let value = localStorage.getItem(key)
-
-    let dates = new Date(parseInt(key))
-    console.log(dateFns.distanceInWordsToNow(dates, { addSuffix: true }));
-
-}
