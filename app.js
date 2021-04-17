@@ -87,7 +87,7 @@ for(let i = 0; i < localStorage.length; i++){
     <div class="d-flex">
         <input class="form-check-input me-1 check" type="checkbox" value="">
         <p class="mx-2">${dataVal}</p>
-        <p class="fst-italic date">${hours}:${minutes}:${sec}</p>
+        <p class="fst-italic date">${dateFns.distanceInWordsToNow(getDate, { addSuffix: true })}</p>
         
     </div>
     <button class="delete btn btn-sm text-danger fas fa-trash-alt" data-bs-toggle="modal" data-bs-target="#deleteTodos"></button>
@@ -170,3 +170,15 @@ darkMode.addEventListener('click', (e) => {
     }
     
 })
+
+let globalDate = new Date()
+
+for(let i = 0; i < localStorage.length; i++){
+
+    let key = localStorage.key(i)
+    let value = localStorage.getItem(key)
+
+    let dates = new Date(parseInt(key))
+    console.log(dateFns.distanceInWordsToNow(dates, { addSuffix: true }));
+
+}
